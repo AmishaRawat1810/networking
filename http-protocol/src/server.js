@@ -1,12 +1,10 @@
-import { filePaths, parseRequest, sendResponse } from "./handleRequest.js";
+import { getResponseParams, sendResponse } from "./handleResponse.js";
+import { parseRequest } from "./handleRequest.js";
 
 const handleConnection = async (conn) => {
   const request = await parseRequest(conn);
-  const path = !(request.path in filePaths)
-    ? "./notFound.html"
-    : filePaths[path];
-
-  await sendResponse(path, request);
+  const params = getResponseParams(request);
+  await sendResponse(conn, params);
 };
 
 const server = async (port = 8000) => {
@@ -17,4 +15,4 @@ const server = async (port = 8000) => {
   }
 };
 
-await server(port);
+await server();

@@ -1,10 +1,10 @@
-import { parseRequest } from "./request_utils.js";
-import { sendResponse } from "./response_utils.js";
+import { parseRequest } from "./request_methods.js";
+import { sendResponse } from "./response_methods.js";
 
 const handleConnection = async (conn, requestHandler) => {
   const request = await parseRequest(conn);
   const response = requestHandler(request);
-  await sendResponse(conn, response);
+  await sendResponse(conn, request, response);
 };
 
 export const serve = async (port, requestHandler) => {

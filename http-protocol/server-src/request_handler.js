@@ -1,35 +1,20 @@
-import { createResponseLine, updateResponse } from "./response_utils.js";
+import { createResponse } from "./response_methods.js";
+
+const readFile = (filePath) => Deno.readTextFileSync(filePath);
+
+const routes = {
+  "/": (data, contentType, statusCode) =>
+    createResponse(data, contentType, statusCode),
+  "/index.html": (data, contentType, statusCode) =>
+    createResponse(data, contentType, statusCode),
+};
 
 export const requestHandler = (request) => {
-  const { path, protocol } = request;
+  const { path } = request;
+  if ((!path) in routes) mapResponse["/notFound"];
 
-  const response = {
-    responseLine: "",
-    headers: { "content-type": "text/html" },
-    newLine: "",
-  };
+  const data = readFile(routes[path]);
+  const contentType = "text/html";
 
-  switch (path) {
-    case "../html-files/index.html": {
-      updateResponse(path, response, 200, "OK");
-      return response;
-    }
-    case "../html-files/pink.html": {
-      updateResponse(path, response, 200, "OK");
-      return response;
-    }
-    case "../html-files/blue.html": {
-      updateResponse(path, response, 200, "OK");
-      return response;
-    }
-    case "../html-files/purple.html": {
-      updateResponse(path, response, 200, "OK");
-      return response;
-    }
-    default: {
-      response.responseLine = createResponseLine(protocol, 404, "NOT FOUND");
-      response.body = "";
-      return response;
-    }
-  }
+  return routes[path](data, contentType, 200);
 };
