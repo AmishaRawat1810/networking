@@ -1,11 +1,12 @@
-import { FILES_ROUTE } from "./global.js";
+import { fetchAndAddPokemon } from "./addPoke.js";
+import { FILES_ROUTE, pokemonData } from "./global.js";
 
-const getRequest = (urlPath, readFile) => {
+const handleGetRequest = (urlPath, readFile) => {
   try {
     const path = FILES_ROUTE[urlPath];
-    console.log({ urlPath, path, FILES_ROUTE });
-    const body = JSON.parse(readFile(path));
-    return new Response(JSON.stringify(body), {
+    const body = readFile(path);
+
+    return new Response(body, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -21,22 +22,39 @@ const getRequest = (urlPath, readFile) => {
   }
 };
 
-export const requestHandler = (request, readFile) => {
+const handlePostRequest = async (urlPath, writeFile) => {
+  const [name] = urlPath.match(/([^\/]+)$/g);
+  await fetchAndAddPokemon(pokemonData, name);
+
+  if (!(name in FILES_ROUTE)) {
+    writeFile(`./pokemon/${name}.json`, JSON.stringify(pokemonData[name]));
+    FILES_ROUTE[`/pokemon/${name}`] = `./pokemon/${name}.json`;
+
+    return new Response("Added Successfully", {
+      staus: 201,
+      headers: { "content-type": "text/plain" },
+    });
+  }
+
+  return new Response("Already exists", {
+    staus: 409,
+    statusText: "Conflict : Pokemon already exists",
+    headers: {
+      "content-type": "text/plain",
+    },
+  });
+};
+
+export const requestHandler = async (request, readFile) => {
   const urlPath = new URL(request.url).pathname;
   const method = request.method;
 
   if (method === "GET") {
-    return getRequest(urlPath, readFile);
+    return handleGetRequest(urlPath, readFile);
   }
 
   if (urlPath.includes("/pokemon/add/") && method === "POST") {
-    Deno.writeTextFileSync("./pokemon.json", pokemonsData.body, {
-      append: true,
-    });
-    return new Response("done", {
-      headers: {
-        "content-type": "text/plain",
-      },
-    });
+    const writeFile = Deno.writeTextFileSync;
+    return await handlePostRequest(urlPath, writeFile);
   }
 };
