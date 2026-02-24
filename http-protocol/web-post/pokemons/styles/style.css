@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  width: 100vw;
+  padding-bottom: 3em;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 0.5em;
+  margin: 5px;
+  text-transform: capitalize;
+}
+
+.card {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 1.5%;
+  width: 16vw;
+  height: 50vh;
+  margin-left: 2em;
+  margin-top: 2em;
+  background-color: rgb(244, 244, 244);
+  padding: 0.6em;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-img {
+  width: 100%;
+  height: 50%;
+  background-color: rgb(230, 230, 230);
+}
+
+.card-desc {
+  height: 50%;
+  width: 100%;
+}
+
+.title {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0em;
+}
+
+#name {
+  height: 80%;
+  width: 50%;
+  font-size: 1em;
+  color: rgb(125, 124, 124);
+}
+
+.types {
+  height: 80%;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.3em;
+}
+
+.type {
+  width: max-content;
+  height: max-content;
+  padding: 0.2em;
+  font-size: 0.8em;
+  color: white;
+  border-radius: 0.25em;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.85em;
+  width: 100%;
+}
+
+td {
+  line-height: 1.6em;
+  color: rgb(125, 124, 124)
+}
+
+tr:nth-child(n + 2) {
+  border-top: 1.4px solid rgb(221, 221, 221);
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+tr :nth-child(odd) {
+  font-weight: bold;
+}

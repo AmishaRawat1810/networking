@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/request_style.css">
+  <title>Pokedex Search</title>
+</head>
+
+<body>
+  <main>
+    <div class="search-card">
+
+      <form action="/" method="POST" class="dropdown-form">
+        <label for="category">Search by Category</label>
+        <select name="category" id="category">
+          <option value="none">none</option>
+          <option value="grass">grass</option>
+          <option value="poison">poison</option>
+          <option value="fire">fire</option>
+          <option value="flying">flying</option>
+          <option value="water">water</option>
+          <option value="bug">bug</option>
+          <option value="normal">normal</option>
+          <option value="ground">ground</option>
+          <option value="fairy">fairy</option>
+          <option value="fighting">fighting</option>
+          <option value="electric">electric</option>
+          <option value="psychic">psychic</option>
+          <option value="rock">rock</option>
+          <option value="ice">ice</option>
+          <option value="dragon">dragon</option>
+          <option value="ghost">ghost</option>
+          <option value="dark">dark</option>
+          <option value="steel">steel</option>
+        </select>
+        <button type="submit">Search Category</button>
+      </form>
+
+      <form action="/pokemon" method="POST" class="search-form">
+        <label for="pokemon">Search specific Pokemon</label>
+        <input type="text" name="pokemon" id="pokemon" placeholder="e.g. Pikachu">
+        <button type="submit">Search Pokemon</button>
+      </form>
+
+    </div>
+
+    </form>
+  </main>
+</body>
+
+</html>

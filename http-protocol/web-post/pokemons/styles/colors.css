@@ -1,0 +1,173 @@
+:root {
+  --grass: mediumseagreen;
+  --poison: mediumpurple;
+  --fire: goldenrod;
+  --flying: steelblue;
+  --water: dodgerblue;
+  --bug: brown;
+  --normal: gray;
+  --ground: peru;
+  --fairy: hotpink;
+  --fighting: crimson;
+  --electric: hsl(51deg 73% 50%);
+  --psychic: orange;
+  --rock: dimgray;
+  --ice: darkcyan;
+  --dragon: mediumaquamarine;
+  --ghost: black;
+  --dark: slategray;
+  --steel: steelblue;
+  --all: dimgray;
+}
+
+.grass {
+  background-color: var(--grass);
+
+  a {
+    color: white;
+  }
+}
+
+.poison {
+  background-color: var(--poison);
+
+  a {
+    color: white;
+  }
+}
+
+.fire {
+  background-color: var(--fire);
+
+  a {
+    color: white;
+  }
+}
+
+.flying {
+  background-color: var(--flying);
+
+  a {
+    color: white;
+  }
+}
+
+.water {
+  background-color: var(--water);
+
+  a {
+    color: white;
+  }
+}
+
+.bug {
+  background-color: var(--bug);
+
+  a {
+    color: white;
+  }
+}
+
+.normal {
+  background-color: var(--normal);
+
+  a {
+    color: white;
+  }
+}
+
+.ground {
+  background-color: var(--ground);
+
+  a {
+    color: white;
+  }
+}
+
+.fairy {
+  background-color: var(--fairy);
+
+  a {
+    color: white;
+  }
+}
+
+.fighting {
+  background-color: var(--fighting);
+
+  a {
+    color: white;
+  }
+}
+
+.electric {
+  background-color: var(--electric);
+
+  a {
+    color: white;
+  }
+}
+
+.psychic {
+  background-color: var(--psychic);
+
+  a {
+    color: white;
+  }
+}
+
+.rock {
+  background-color: var(--rock);
+
+  a {
+    color: white;
+  }
+}
+
+.ice {
+  background-color: var(--ice);
+
+  a {
+    color: white;
+  }
+}
+
+.dragon {
+  background-color: var(--dragon);
+
+  a {
+    color: white;
+  }
+}
+
+.ghost {
+  background-color: var(--ghost);
+
+  a {
+    color: white;
+  }
+}
+
+.dark {
+  background-color: var(--dark);
+
+  a {
+    color: white;
+  }
+}
+
+.steel {
+  background-color: var(--steel);
+
+  a {
+    color: white;
+  }
+}
+
+.all {
+  background-color: var(--all);
+
+  a {
+    color: white;
+  }
+}
