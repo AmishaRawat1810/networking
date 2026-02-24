@@ -71,42 +71,40 @@ const serveForm = async (req) => {
   //redirect to home
   return new Response(null, {
     status: 303,
-    headers: { location: "/" },
+    headers: { location: "/category" },
   });
+};
+
+const serveGetRequest = (urlPath) => {
+  if (urlPath === "/category") {
+    return serveHomepage();
+  }
+
+  const isCategory = /^\/[a-z]+$/g.test(urlPath);
+
+  if (isCategory) {
+    return serveCategory(urlPath);
+  }
+  if (urlPath.includes(".css")) {
+    return serveStyle(urlPath);
+  }
 };
 
 export const requestHandler = (req) => {
   const url = new URL(req.url);
   const urlPath = url.pathname;
 
-  console.log({ urlPath, method: req.method });
-
-  // form submission handling
-  if (urlPath === "/" && req.method === "POST") {
+  if (urlPath === "/category" && req.method === "POST") {
     return serveForm(req);
   }
 
-  //form 2 submission handling
   if (urlPath === "/pokemon" && req.method === "POST") {
     return servePokemon(req);
   }
 
-  //handle pages load
   if (req.method === "GET") {
-    if (urlPath === "/") {
-      return serveHomepage();
-    }
-
-    const isCategory = /^\/[a-z]+$/g.test(urlPath);
-    console.log(isCategory, urlPath);
-    if (isCategory) {
-      return serveCategory(urlPath);
-    }
-    if (urlPath.includes("css")) {
-      return serveStyle(urlPath);
-    }
+    return serveGetRequest(urlPath);
   }
 
-  //no such page
   return serveNotFound();
 };
