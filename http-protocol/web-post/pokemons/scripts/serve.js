@@ -71,12 +71,12 @@ const serveForm = async (req) => {
   //redirect to home
   return new Response(null, {
     status: 303,
-    headers: { location: "/category" },
+    headers: { location: "/" },
   });
 };
 
 const serveGetRequest = (urlPath) => {
-  if (urlPath === "/category") {
+  if (urlPath === "/") {
     return serveHomepage();
   }
 
@@ -94,7 +94,7 @@ export const requestHandler = (req) => {
   const url = new URL(req.url);
   const urlPath = url.pathname;
 
-  if (urlPath === "/category" && req.method === "POST") {
+  if (urlPath === "/" && req.method === "POST") {
     return serveForm(req);
   }
 
