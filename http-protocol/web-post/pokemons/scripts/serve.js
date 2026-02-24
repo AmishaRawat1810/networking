@@ -2,10 +2,16 @@ const servePokemon = async (req) => {
   const reqBody = await req.text();
   const searchParams = new URLSearchParams(reqBody);
   const pokemon = searchParams.get("pokemon");
-  const body = Deno.readTextFileSync(`./pages/cards/${pokemon}.html`);
-  const headers = new Headers();
-  headers.append("content-type", "text/html");
-  return new Response(body, { headers });
+
+  try {
+    const body = Deno.readTextFileSync(`./pages/cards/${pokemon}.html`);
+    const headers = new Headers();
+    headers.append("content-type", "text/html");
+
+    return new Response(body, { headers });
+  } catch {
+    return serveNotFound();
+  }
 };
 
 const serveHomepage = () => {
