@@ -1,0 +1,40 @@
+.inactive {
+  visibility: hidden;
+}
+
+.active {
+  visibility: visible;
+  transition: 0.4s ease-in-out;
+}
+
+.toggle {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#boxes {
+  gap: 1em;
+  display: flex;
+  width: max-content;
+  height: max-content;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  background-color: lightgray;
+  transition: background-color 0.4s ease-in-out;
+}
+
+button {
+  width: max-content;
+  height: 20px;
+}
+
+.active-color {
+  background-color: coral;
+}
