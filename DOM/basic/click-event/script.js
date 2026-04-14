@@ -16,14 +16,14 @@ console.log("USING TEXT CONTENT", container.textContent);
 console.log("USING INNER HTML", container.innerHTML);
 
 const btn = document.querySelector(".btn");
-const boxes = document.querySelectorAll(".box");
+const allBox = document.querySelectorAll(".box");
 
-const len = boxes.length;
+const len = allBox.length;
 let i = 0;
 btn.onclick = () => {
   btn.style.visibility = "hidden";
   setInterval(() => {
-    boxes[i % len].classList.toggle("active-color");
+    allBox[i % len].classList.toggle("active-color");
     i++;
   }, 1000);
 };
